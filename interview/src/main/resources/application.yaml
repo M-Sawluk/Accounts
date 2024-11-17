@@ -13,3 +13,7 @@ spring:
     password: password
   application:
     name: interview
+
+nbp:
+  exchange-rates:
+   url: http://api.nbp.pl/api/exchangerates/rates/C/EUR/
