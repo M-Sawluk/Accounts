@@ -2,8 +2,10 @@ package com.michals.interview.service;
 
 import com.michals.interview.domain.Account;
 import com.michals.interview.domain.AccountHolder;
+import com.michals.interview.exception.AccountNotFound;
 import com.michals.interview.model.AccountDTO;
 import com.michals.interview.model.AccountCreateRequest;
+import com.michals.interview.service.factory.AccountsFactory;
 import com.michals.interview.service.mapper.AccountMapper;
 import com.michals.interview.service.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +34,6 @@ public class AccountService {
     public AccountDTO findById(String id) {
         return accountRepository.findById(UUID.fromString(id))
                 .map(AccountMapper::map)
-                .orElseThrow(IllegalStateException::new);
+                .orElseThrow(() -> new AccountNotFound(id));
     }
 }

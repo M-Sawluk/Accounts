@@ -1,6 +1,6 @@
 package com.michals.interview.controller;
 
-import com.michals.interview.model.AccountDTO;
+import com.michals.interview.model.ExchangeDTO;
 import com.michals.interview.model.ExchangeRequest;
 import com.michals.interview.service.ExchangeService;
 import jakarta.validation.Valid;
@@ -15,7 +15,7 @@ public class ExchangesController {
     private final ExchangeService exchangeService;
 
     @PostMapping("/{accountNumber}/exchanges")
-    AccountDTO createExchange(@PathVariable String accountNumber, @Valid @RequestBody ExchangeRequest exchangeRequest) {
+    ExchangeDTO createExchange(@PathVariable String accountNumber, @Valid @RequestBody ExchangeRequest exchangeRequest) {
         return exchangeService.createExchange(accountNumber, exchangeRequest);
     }
 }

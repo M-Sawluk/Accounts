@@ -16,12 +16,12 @@ public class AccountMapper {
         List<SubAccountDTO> subAccounts = createSubAccounts(account.getSubAccounts());
         AccountHolder accountHolder = account.getAccountHolder();
         AccountHolderDTO accountHolderDTO = new AccountHolderDTO(accountHolder.getName(), accountHolder.getSurname());
-        return new AccountDTO(account.getId().toString(), account.getCurrency(), account.getAmount(), accountHolderDTO, subAccounts);
+        return new AccountDTO(account.getId().toString(), account.getCurrency(), account.getBalance(), accountHolderDTO, subAccounts);
     }
 
     private static List<SubAccountDTO> createSubAccounts(List<Account> accounts) {
         return accounts.stream()
-                .map(subAccount -> new SubAccountDTO(subAccount.getCurrency(), subAccount.getAmount()))
+                .map(subAccount -> new SubAccountDTO(subAccount.getCurrency(), subAccount.getBalance()))
                 .toList();
     }
 }

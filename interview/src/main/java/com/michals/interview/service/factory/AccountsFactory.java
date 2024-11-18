@@ -1,4 +1,4 @@
-package com.michals.interview.service;
+package com.michals.interview.service.factory;
 
 import com.michals.interview.domain.Account;
 import com.michals.interview.domain.AccountHolder;
@@ -14,7 +14,7 @@ public class AccountsFactory {
 
     public static Account createAccounts(AccountCreateRequest accountCreateRequest, AccountHolder accountHolder) {
         Account mainAccount = new Account();
-        mainAccount.setAmount(accountCreateRequest.startingBalance());
+        mainAccount.setBalance(accountCreateRequest.startingBalance());
         mainAccount.setCurrency(Currency.PLN);
         mainAccount.setAccountHolder(accountHolder);
         mainAccount.setSubAccounts(buildSubAccounts(accountHolder, mainAccount));
@@ -24,7 +24,7 @@ public class AccountsFactory {
 
     private static List<Account> buildSubAccounts(AccountHolder accountHolder, Account mainAccount) {
         Account subAccount = new Account();
-        subAccount.setAmount(BigDecimal.ZERO);
+        subAccount.setBalance(BigDecimal.ZERO);
         subAccount.setCurrency(Currency.EUR);
         subAccount.setAccountHolder(accountHolder);
         subAccount.setParentAccount(mainAccount);

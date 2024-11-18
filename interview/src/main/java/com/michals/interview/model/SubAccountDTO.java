@@ -4,5 +4,5 @@ import com.michals.interview.domain.Currency;
 
 import java.math.BigDecimal;
 
-public record SubAccountDTO(Currency currency, BigDecimal amount) {
+public record SubAccountDTO(Currency currency, BigDecimal balance) {
 }

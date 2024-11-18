@@ -16,4 +16,4 @@ spring:
 
 nbp:
   exchange-rates:
-   url: http://api.nbp.pl/api/exchangerates/rates/C/EUR/
+    url: http://api.nbp.pl/api/exchangerates/rates/C/
