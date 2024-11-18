@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/exchangerates/EUR"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "table": "C",
+      "currency": "euro",
+      "code": "EUR",
+      "rates": [
+        {
+          "no": "223/C/NBP/2024",
+          "effectiveDate": "2024-11-18",
+          "bid": 4.2785,
+          "ask": 4.3649
+        }
+      ]
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

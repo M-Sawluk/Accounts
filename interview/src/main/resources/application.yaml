@@ -17,3 +17,7 @@ spring:
 nbp:
   exchange-rates:
     url: http://api.nbp.pl/api/exchangerates/rates/C/
+
+springdoc:
+  api-docs:
+    path: /api-docs

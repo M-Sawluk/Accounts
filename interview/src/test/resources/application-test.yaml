@@ -1,0 +1,3 @@
+nbp:
+  exchange-rates:
+    url: http://localhost:${wiremock.server.port}/api/exchangerates/

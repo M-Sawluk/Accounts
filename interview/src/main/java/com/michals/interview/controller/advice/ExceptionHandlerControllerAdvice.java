@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.stream.Collectors;
 
@@ -36,9 +35,7 @@ public class ExceptionHandlerControllerAdvice {
 
     @ExceptionHandler({AccountNotFound.class})
     public ResponseEntity<Object> handleAccountNotFound(AccountNotFound exception) {
-        return ResponseEntity.badRequest()
-                .header("message", exception.getMessage())
-                .build();
+        return ResponseEntity.notFound().build();
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
