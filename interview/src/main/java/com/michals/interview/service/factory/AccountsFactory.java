@@ -25,7 +25,7 @@ public class AccountsFactory {
     private static List<Account> buildSubAccounts(AccountHolder accountHolder, Account mainAccount) {
         Account subAccount = new Account();
         subAccount.setBalance(BigDecimal.ZERO);
-        subAccount.setCurrency(Currency.EUR);
+        subAccount.setCurrency(Currency.USD);
         subAccount.setAccountHolder(accountHolder);
         subAccount.setParentAccount(mainAccount);
 

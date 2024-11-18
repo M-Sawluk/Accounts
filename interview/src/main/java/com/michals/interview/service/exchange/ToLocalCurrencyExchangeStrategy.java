@@ -19,14 +19,14 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
-public class PlnToEuroExchangeStrategy implements ExchangeStrategy {
+public class ToLocalCurrencyExchangeStrategy implements ExchangeStrategy {
 
     private final AccountRepository accountRepository;
     private final ExchangeRepository exchangeRepository;
 
     @Override
     public boolean appliesFor(ExchangeRequest exchangeRequest) {
-        return exchangeRequest.currencyFrom().equals(Currency.PLN) && exchangeRequest.currencyTo().equals(Currency.EUR);
+        return exchangeRequest.currencyTo().equals(Currency.PLN);
     }
 
     @Override
@@ -34,11 +34,11 @@ public class PlnToEuroExchangeStrategy implements ExchangeStrategy {
     public Exchange createExchange(ExchangeRequest exchangeRequest, String accountNumber, ExchangeResponse currentExchangeRates) {
         Account account = accountRepository.loadForUpdateByAccountNumber(UUID.fromString(accountNumber))
                 .orElseThrow(() -> new AccountNotFound(accountNumber));
-        BigDecimal buyRate = currentExchangeRates.getBuyRate();
-        BigDecimal euroAmountBought = exchangeRequest.amount().divide(buyRate, 2, RoundingMode.FLOOR);
-        account.subtractBalance(exchangeRequest.amount());
-        account.findCurrencyAccount(Currency.EUR).addBalance(euroAmountBought);
-        Exchange exchange = ExchangeFactory.createExchange(exchangeRequest, buyRate, accountNumber, euroAmountBought);
+        BigDecimal saleRate = currentExchangeRates.getSaleRate();
+        BigDecimal plnAmountBought = exchangeRequest.amount().multiply(saleRate).setScale(2, RoundingMode.FLOOR);
+        account.addBalance(plnAmountBought);
+        account.findCurrencyAccount(Currency.USD).subtractBalance(exchangeRequest.amount());
+        Exchange exchange = ExchangeFactory.createExchange(exchangeRequest, saleRate, accountNumber, plnAmountBought);
 
         return exchangeRepository.save(exchange);
     }

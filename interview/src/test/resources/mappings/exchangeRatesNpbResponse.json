@@ -1,14 +1,14 @@
 {
   "request": {
     "method": "GET",
-    "url": "/api/exchangerates/EUR"
+    "url": "/api/exchangerates/USD"
   },
   "response": {
     "status": 200,
     "jsonBody": {
       "table": "C",
-      "currency": "euro",
-      "code": "EUR",
+      "currency": "dolar",
+      "code": "USD",
       "rates": [
         {
           "no": "223/C/NBP/2024",

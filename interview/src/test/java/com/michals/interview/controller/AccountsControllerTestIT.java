@@ -48,7 +48,7 @@ class AccountsControllerTestIT {
         assertThat(body.balance()).isEqualTo(STARTING_BALANCE);
         assertThat(body.currency()).isEqualTo(Currency.PLN);
         assertThat(body.subAccounts()).extracting("currency", "balance")
-                .containsExactly(tuple(Currency.EUR, BigDecimal.ZERO));
+                .containsExactly(tuple(Currency.USD, BigDecimal.ZERO));
         assertThat(body.accountHolder())
                 .extracting("name", "surname")
                 .containsExactly(NAME, SURNAME);
@@ -70,7 +70,7 @@ class AccountsControllerTestIT {
         assertThat(body.balance()).isEqualTo(STARTING_BALANCE);
         assertThat(body.currency()).isEqualTo(Currency.PLN);
         assertThat(body.subAccounts()).extracting("currency", "balance")
-                .containsExactly(tuple(Currency.EUR, BigDecimal.ZERO.setScale(2, FLOOR)));
+                .containsExactly(tuple(Currency.USD, BigDecimal.ZERO.setScale(2, FLOOR)));
         assertThat(body.accountHolder())
                 .extracting("name", "surname")
                 .containsExactly(NAME, SURNAME);

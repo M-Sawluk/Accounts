@@ -21,7 +21,7 @@ public class ExchangeService {
     private final List<ExchangeStrategy> exchangeStrategies;
 
     public ExchangeDTO createExchange(String accountNumber, ExchangeRequest exchangeRequest) {
-        ExchangeResponse currentExchangeRates = nbpRatesApiClient.getCurrentExchangeRates(Currency.EUR.name());
+        ExchangeResponse currentExchangeRates = nbpRatesApiClient.getCurrentExchangeRates(Currency.USD.name());
         ExchangeStrategy strategy = findExchangeStrategy(exchangeRequest);
         Exchange exchange = strategy.createExchange(exchangeRequest, accountNumber, currentExchangeRates);
         return ExchangeMapper.map(exchange);

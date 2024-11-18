@@ -16,6 +16,6 @@ public record ExchangeRequest(@DecimalMin(value = "0.01", message = "Minimum sta
                            @Schema(type = "string", example = "PLN")
                            Currency currencyFrom,
                            @NotNull
-                           @Schema(type = "string", example = "EUR")
+                           @Schema(type = "string", example = "USD")
                            Currency currencyTo) {
 }
