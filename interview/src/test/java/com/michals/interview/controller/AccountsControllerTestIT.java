@@ -17,11 +17,8 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
 
-import static com.michals.interview.fixtures.AccountTestData.ACCOUNT_CREATE_REQUEST;
-import static com.michals.interview.fixtures.AccountTestData.STARTING_BALANCE;
-import static com.michals.interview.fixtures.AccountTestData.SURNAME;
+import static com.michals.interview.fixtures.AccountTestData.*;
 import static java.math.RoundingMode.FLOOR;
-import static javax.swing.Action.NAME;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
